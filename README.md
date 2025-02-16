@@ -44,3 +44,84 @@ php artisan migrate --seed
 ### Default admin credentials:
 - **Email:** admin@example.com
 - **Password:** password123
+
+## API Endpoints
+
+### Task Endpoints
+
+#### List Tasks
+**GET** /api/tasks  
+Fetches all tasks for the authenticated user.
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "title": "Sample Task",
+    "status": "pending",
+    "user_id": 1,
+    "created_at": "2023-02-01T00:00:00.000000Z",
+    "updated_at": "2023-02-01T00:00:00.000000Z"
+  }
+]
+```
+
+#### Create a Task
+**POST** /api/tasks  
+Adds a new task.
+
+**Request:**
+```json
+{
+  "title": "New Task",
+  "status": "pending"
+}
+```
+
+**Response:**
+```json
+{
+  "id": 2,
+  "title": "New Task",
+  "status": "pending",
+  "user_id": 1,
+  "created_at": "2023-02-01T00:00:00.000000Z",
+  "updated_at": "2023-02-01T00:00:00.000000Z"
+}
+```
+
+#### Update a Task
+**PUT** /api/tasks/{id}  
+Updates an existing task.
+
+**Request:**
+```json
+{
+  "title": "Updated Task",
+  "status": "completed"
+}
+```
+
+**Response:**
+```json
+{
+  "id": 2,
+  "title": "Updated Task",
+  "status": "completed",
+  "user_id": 1,
+  "created_at": "2023-02-01T00:00:00.000000Z",
+  "updated_at": "2023-02-01T00:00:00.000000Z"
+}
+```
+
+#### Delete a Task
+**DELETE** /api/tasks/{id}  
+Deletes a task.
+
+**Response:**
+```json
+{
+  "message": "Task deleted successfully"
+}
+```
