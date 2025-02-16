@@ -2,8 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+route::get('/',function(){
+    return view('login');
+});
+Route::get('/login', function () {
+    return view('login');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/tasks', function () {
+    return view('tasks');
+});
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
